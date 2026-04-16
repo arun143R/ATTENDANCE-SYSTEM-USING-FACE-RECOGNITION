@@ -21,6 +21,8 @@
 
 ## Overview {#overview}
 
+[![Demo Video](Screen%20Recording%202026-04-16%20104842%20(1)%20(1)%20(1).mp4)](Screen%20Recording%202026-04-16%20104842%20(1)%20(1)%20(1).mp4)
+
 Welcome to the **Face Recognition Attendance System** - a complete, production-ready web application that revolutionizes traditional attendance tracking using modern face recognition technology. This system combines computer vision, machine learning, real-time video processing, and a robust backend to provide accurate, contactless attendance management for educational institutions, offices, and organizations.
 
 ### What Makes This System Unique?
