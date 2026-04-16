@@ -301,10 +301,7 @@ docker run -p 3000:3000 -v $(pwd)/data:/app/data attendance
 ✅ Face fills 50%+ of camera
 ✅ No glasses/hats/masks
 ✅ Neutral expression
-❌ Backlight/shadows
-❌ Too far/close
-❌ Multiple faces
-```
+
 
 ## Face Recognition Details {#face-recognition-details}
 
@@ -365,8 +362,6 @@ No Token  → Public pages only
 ✅ Face vectors (not photos)
 ✅ Passwords local-only  
 ✅ SQLite file permissions
-❌ No password hashing (local)
-❌ No HTTPS enforcement
 ```
 
 ## Deployment {#deployment}
