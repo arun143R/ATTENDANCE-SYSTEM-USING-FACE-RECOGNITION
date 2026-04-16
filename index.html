@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Recognition Attendance System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-link active" href="#home" data-section="home">Home</a>
+    <a class="nav-link" href="#signup" data-section="signup">Signup</a>
+    <a class="nav-link" href="#attendance" data-section="attendance">Attendance</a>
+    <a class="nav-link" href="#dashboard" data-section="dashboard">Teacher Attendance</a>
+    <a class="nav-link" href="#admin" data-section="admin">Admin</a>
+  </nav>
+
+  <main>
+    <section id="home" class="section-panel active">
+      <div class="hero">
+        <div class="hero__content">
+          <p class="hero__label">ATTENDANCE</p>
+          <h1 class="hero__title">SYSTEM USING</h1>
+          <h2 class="hero__subtitle">FACE RECOGNITION</h2>
+          <p class="hero__author">- team by <strong>void</strong></p>
+          <div class="hero__actions">
+            <button class="button-link" data-section="signup">Signup</button>
+            <button class="button-link button-link--primary" data-section="attendance">Open Attendance</button>
+          </div>
+        </div>
+        <div class="hero__image">
+          <div class="hero__photo"></div>
+          <div class="hero__overlay"></div>
+          <div class="hero__rings">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signup" class="section-panel">
+      <div class="page-heading">
+        <p class="attendance-label">Create Account</p>
+        <h1>Signup for face attendance</h1>
+        <p>Register a user and then enroll your face in the attendance system.</p>
+      </div>
+      <section class="signup-card">
+        <div class="signup-card__header">
+          <div class="signup-card__icon">👤</div>
+          <div>
+            <p class="signup-card__label">Sign up as:</p>
+            <div class="signup-card__toggle">
+              <button class="toggle-button active" type="button">Student</button>
+              <button class="toggle-button" type="button">Teacher</button>
+            </div>
+          </div>
+        </div>
+
+        <form class="signup-form" id="signup-form">
+          <label class="field-label" for="signup-username">Username</label>
+          <div class="field-row">
+            <span class="field-icon">👤</span>
+            <input id="signup-username" type="text" placeholder="Enter username" />
+          </div>
+
+          <label class="field-label" for="signup-email">Email Address</label>
+          <div class="field-row">
+            <span class="field-icon">✉️</span>
+            <input id="signup-email" type="email" placeholder="Enter email" />
+          </div>
+
+          <label class="field-label" for="signup-password">Password</label>
+          <div class="field-row">
+            <span class="field-icon">🔒</span>
+            <input id="signup-password" type="password" placeholder="Enter password" />
+          </div>
+
+          <button id="signup-button" class="primary-button" type="button">Create Account</button>
+          <div id="signup-banner" class="error-banner" style="display:none;">Error connecting to server</div>
+        </form>
+      </section>
+    </section>
+
+    <section id="attendance" class="section-panel">
+      <div class="page-heading">
+        <p class="attendance-label">Face Recognition</p>
+        <h1>Attendance Capture</h1>
+        <p>Register your face and mark attendance using live camera recognition.</p>
+      </div>
+      <section class="attendance-card">
+        <div class="attendance-grid">
+          <div class="video-panel">
+            <video id="video" autoplay muted playsinline></video>
+            <div id="video-status" class="status-pill">Loading camera…</div>
+          </div>
+
+          <div class="attendance-controls">
+            <label class="field-label" for="attendance-username">Username</label>
+            <input id="attendance-username" type="text" placeholder="Enter your username" />
+
+            <button id="register-face" class="primary-button" type="button">Register Face</button>
+            <button id="mark-attendance" class="primary-button" type="button">Mark Attendance</button>
+            <div id="attendance-result" class="status-box">No action yet.</div>
+
+            <div class="history-panel">
+              <h2>Recent Attendance</h2>
+              <ul id="attendance-history"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="dashboard" class="section-panel">
+      <div class="page-heading">
+        <p class="attendance-label">Teacher Attendance</p>
+        <h1 id="dashboard-title">Teacher Attendance</h1>
+        <p id="dashboard-description">View your attendance records and performance.</p>
+      </div>
+      <section class="dashboard-card">
+        <div class="dashboard-login" id="dashboard-login">
+          <h2>Sign In to Dashboard</h2>
+          <label class="field-label" for="dashboard-username">Username</label>
+          <input id="dashboard-username" type="text" placeholder="Enter your username" />
+          <label class="field-label" for="dashboard-password">Password</label>
+          <input id="dashboard-password" type="password" placeholder="Enter your password" />
+          <button id="dashboard-login-button" class="primary-button" type="button">Sign In</button>
+          <div id="dashboard-login-error" class="status-box status-box--error" style="display:none;"></div>
+        </div>
+
+        <div class="user-dashboard" id="user-dashboard" style="display:none;">
+          <div class="dashboard-header">
+            <div>
+              <p class="attendance-label" id="user-role-label">STUDENT</p>
+              <h2 id="user-dashboard-title">Student Dashboard</h2>
+              <p id="user-dashboard-description">Your personal attendance overview.</p>
+            </div>
+            <button id="dashboard-logout-button" class="secondary-button" type="button">Sign Out</button>
+          </div>
+
+          <div id="student-view" style="display:none;">
+            <div class="dashboard-grid">
+              <div class="metric-card">
+                <p class="metric-title">Total Check-ins</p>
+                <p id="stat-checkins" class="metric-value">0</p>
+                <p class="metric-note">Total attendance records</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-title">Last Check-in</p>
+                <p id="stat-last-checkin" class="metric-value">Never</p>
+                <p class="metric-note">Most recent check-in</p>
+              </div>
+            </div>
+
+            <div class="dashboard-list">
+              <h2>Your Attendance History</h2>
+              <ul id="student-attendance-list"></ul>
+            </div>
+          </div>
+
+          <div id="teacher-view" style="display:none;">
+            <div class="dashboard-grid">
+              <div class="metric-card">
+                <p class="metric-title">Students Registered</p>
+                <p id="stat-total-students" class="metric-value">0</p>
+                <p class="metric-note">Total registered in system</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-title">Present Today</p>
+                <p id="stat-present-today" class="metric-value">0</p>
+                <p class="metric-note">Students checked in today</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-title">Absent Today</p>
+                <p id="stat-absent-today" class="metric-value">0</p>
+                <p class="metric-note">Students without check-in</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-title">Avg Check-in Time</p>
+                <p id="stat-avg-time" class="metric-value">--:--</p>
+                <p class="metric-note">Average first check-in</p>
+              </div>
+            </div>
+
+            <div class="dashboard-list">
+              <h2>Today's Check-ins</h2>
+              <ul id="teacher-checkins-list"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="admin" class="section-panel">
+      <div class="page-heading">
+        <p class="attendance-label">Dashboard</p>
+        <h1>Admin Overview</h1>
+        <p>Admin-only metrics for attendance and user registration.</p>
+      </div>
+      <section class="admin-card">
+        <div class="admin-login" id="admin-login">
+          <h2>Admin Sign in</h2>
+          <label class="field-label" for="admin-username">Username</label>
+          <input id="admin-username" type="text" placeholder="admin" value="admin" />
+          <label class="field-label" for="admin-password">Password</label>
+          <input id="admin-password" type="password" placeholder="••••••••" value="admin123" />
+          <button id="admin-login-button" class="primary-button" type="button">Sign In</button>
+          <div id="admin-login-error" class="status-box status-box--error" style="display:none;"></div>
+        </div>
+
+        <div class="admin-dashboard" id="admin-dashboard" style="display:none;">
+          <div class="dashboard-header">
+            <div>
+              <p class="attendance-label">Admin Dashboard</p>
+              <h2>Face Recognition Metrics</h2>
+              <p>Live attendance overview for registered users.</p>
+            </div>
+            <button id="admin-logout-button" class="secondary-button" type="button">Sign Out</button>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="metric-card">
+              <p class="metric-title">Registered</p>
+              <p id="stat-registered" class="metric-value">0</p>
+              <p class="metric-note">Total registered users</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-title">Present Today</p>
+              <p id="stat-present" class="metric-value">0</p>
+              <p class="metric-note">Attendance recorded today</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-title">Avg Check-in</p>
+              <p id="stat-avgcheckin" class="metric-value">--:--</p>
+              <p class="metric-note">Average first check-in time</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-title">Absent Today</p>
+              <p id="stat-absent" class="metric-value">0</p>
+              <p class="metric-note">Users without check-in</p>
+            </div>
+          </div>
+
+          <div class="dashboard-list">
+            <h2>Recent Activity</h2>
+            <ul id="recent-activity"></ul>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

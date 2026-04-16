@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Recognition System - Sign Up</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="signup.html">Signup</a>
+    <a class="nav-link" href="attendance.html">Attendance</a>
+    <a class="nav-link" href="admin.html">Admin</a>
+  </nav>
+  <main class="signup-page">
+    <section class="signup-card">
+      <div class="signup-card__header">
+        <div class="signup-card__icon">👤</div>
+        <div>
+          <p class="signup-card__label">Sign up as:</p>
+          <div class="signup-card__toggle">
+            <button class="toggle-button active">Student</button>
+            <button class="toggle-button">Teacher</button>
+          </div>
+        </div>
+      </div>
+
+      <form class="signup-form">
+        <label class="field-label" for="username">Username</label>
+        <div class="field-row">
+          <span class="field-icon">👤</span>
+          <input id="username" type="text" value="poer,man" />
+        </div>
+
+        <label class="field-label" for="email">Email Address</label>
+        <div class="field-row">
+          <span class="field-icon">✉️</span>
+          <input id="email" type="email" value="aravindarun5314@gmail.com" />
+        </div>
+
+        <label class="field-label" for="password">Password</label>
+        <div class="field-row">
+          <span class="field-icon">🔒</span>
+          <input id="password" type="password" value="password" />
+        </div>
+
+        <button class="primary-button" type="button">Create Student Account</button>
+      <div class="error-banner" style="display:none;">Error connecting to server</div>
+      </form>
+    </section>
+  </main>
+  <script src="signup.js"></script>
+</html>

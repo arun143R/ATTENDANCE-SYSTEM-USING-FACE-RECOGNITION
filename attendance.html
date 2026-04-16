@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Recognition Attendance</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="signup.html">Signup</a>
+    <a class="nav-link" href="attendance.html">Attendance</a>
+    <a class="nav-link" href="admin.html">Admin</a>
+  </nav>
+  <main class="attendance-page">
+    <section class="attendance-card">
+      <div class="attendance-header">
+        <div>
+          <p class="attendance-label">Face Recognition</p>
+          <h1>Attendance Capture</h1>
+          <p>Register your face, then mark attendance through live camera recognition.</p>
+        </div>
+        <a class="secondary-link" href="signup.html">Signup</a>
+      </div>
+
+      <div class="attendance-grid">
+        <div class="video-panel">
+          <video id="video" autoplay muted playsinline></video>
+          <div id="video-status" class="status-pill">Loading camera…</div>
+        </div>
+
+        <div class="attendance-controls">
+          <label class="field-label" for="attendance-username">Username</label>
+          <input id="attendance-username" type="text" placeholder="Enter your username" />
+
+          <button id="register-face" class="primary-button">Register Face</button>
+          <button id="mark-attendance" class="primary-button">Mark Attendance</button>
+          <div id="attendance-result" class="status-box">No action yet.</div>
+
+          <div class="history-panel">
+            <h2>Recent Attendance</h2>
+            <ul id="attendance-history"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script src="attendance.js"></script>
+</body>
+</html>

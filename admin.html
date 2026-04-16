@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Attendance System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="signup.html">Signup</a>
+    <a class="nav-link" href="attendance.html">Attendance</a>
+    <a class="nav-link" href="index.html#dashboard">Teacher Attendance</a>
+    <a class="nav-link" href="admin.html">Admin</a>
+  </nav>
+  <main class="admin-page">
+    <section class="admin-card">
+      <div class="admin-login" id="admin-login">
+        <h1>Admin Sign in</h1>
+        <p>Enter your admin username and password to see attendance metrics.</p>
+        <label class="field-label" for="admin-username">Username</label>
+        <input id="admin-username" type="text" placeholder="admin" value="admin" />
+        <label class="field-label" for="admin-password">Password</label>
+        <input id="admin-password" type="password" placeholder="••••••••" value="admin123" />
+        <button id="admin-login-button" class="primary-button">Sign In</button>
+        <div id="admin-login-error" class="status-box status-box--error" style="display:none;"></div>
+      </div>
+
+      <div class="admin-dashboard" id="admin-dashboard" style="display:none;">
+        <div class="dashboard-header">
+          <div>
+            <p class="attendance-label">Admin Dashboard</p>
+            <h1>Face Recognition Metrics</h1>
+            <p>Admin access only. Live attendance overview for registered users.</p>
+          </div>
+          <button id="admin-logout-button" class="secondary-button">Sign Out</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="metric-card">
+            <p class="metric-title">Registered</p>
+            <p id="stat-registered" class="metric-value">0</p>
+            <p class="metric-note">Total registered users</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-title">Present Today</p>
+            <p id="stat-present" class="metric-value">0</p>
+            <p class="metric-note">Attendance recorded today</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-title">Avg Check-in</p>
+            <p id="stat-avgcheckin" class="metric-value">--:--</p>
+            <p class="metric-note">Average first check-in time</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-title">Absent Today</p>
+            <p id="stat-absent" class="metric-value">0</p>
+            <p class="metric-note">Users without check-in</p>
+          </div>
+        </div>
+
+        <div class="dashboard-list">
+          <h2>Recent Activity</h2>
+          <ul id="recent-activity"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
